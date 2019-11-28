@@ -1,6 +1,7 @@
 from scapy.all import *
 import sys
 
+# 本地mac地址
 localmac = "b0:35:9f:21:5e:4e"
 dstmac = "FF:FF:FF:FF:FF:FF"
 localip = "192.168.1.103"
