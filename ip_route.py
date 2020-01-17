@@ -1,11 +1,13 @@
 from scapy.all import *
 import struct
 
+
 def ip_handle(src):
     src_list = src.split(".")
     for sec in src_list:
         src_pact = struct.pack(">B", int(sec))
         yield src_pact
+
 
 def traceroute(src, dst):
     src_handle = ip_handle(src)
@@ -17,5 +19,5 @@ def traceroute(src, dst):
     #     print(router)
     print(result.getlayer(IP).show())
 
+
 traceroute("192.168.1.103","192.168.1.105")
-    
