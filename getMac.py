@@ -1,15 +1,14 @@
-import sys
+from tinyTools import *
 
 from scapy.all import *
 
 # 本地mac地址
-localmac = "b0:35:9f:21:5e:4e"
+localmac = get_mac()
 dstmac = "FF:FF:FF:FF:FF:FF"
-localip = "192.168.100.8"
+localip = get_ip()
 dstip = sys.argv[1]
 
 def get_mac(dst_ip):
-
     # 使用数据链路层发包时需要指定接口，如iface = wlan0
     result_raw = srp(Ether(dst=dstmac, src=localmac) / ARP(op=1, hwsrc=localmac, psrc=localip, pdst=dst_ip), iface="wlan0",
                  verbose=False)

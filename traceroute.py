@@ -8,7 +8,6 @@ import time
 
 def response(ip, dport, ttl):
     """
-
     :param ip: 需要记录路由的目的IP地址
     :param dport: 目的端口
     :param ttl: time to live
