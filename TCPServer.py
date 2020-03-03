@@ -35,6 +35,8 @@ def creat_server(port):
         connection.close()
 
 
+def trans_file():
+    myip = tinyTools.get_ip
 if __name__ == "__main__":
     creat_server(6666)
 

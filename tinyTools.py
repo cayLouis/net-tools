@@ -31,7 +31,10 @@ def get_mac_linux():
     result = os.popen("ifconfig")
     regex = re.compile('ether\s(\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2})')
     match_result = regex.findall(result.read())
-    return match_result[1]
+    if len(match_result) == 1:
+        return match_result[0]
+    else:
+        return match_result[1]
 
 
 def get_ip():
