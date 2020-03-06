@@ -1,4 +1,4 @@
-import tinyTools
+from . import tinyTools
 from scapy.all import *
 import time
 import multiprocessing

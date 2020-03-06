@@ -1,4 +1,4 @@
-from tinyTools import *
+from .tinyTools import *
 
 from scapy.all import *
 
