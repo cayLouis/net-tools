@@ -31,5 +31,36 @@ def connect_server(ip, port):
     sock_cli.close()
 
 
+def rece_file(ip, port):
+    sock = socket(AF_INET, SOCK_STREAM)
+    sock.connect((ip, port))
+    while True:
+        print('''
+        1.显示当前目录存在的文件
+        0.退出
+        ---------------------
+        输入文件名进行下载''')
+        mess = input("输入你想进行的操作：")
+        mess_byte = mess.encode('utf-8')
+        if mess == '':
+            print("选项错误！！！")
+        elif mess == '1':
+            sock.send(mess_byte)
+            data = sock.recv(1024)
+            print(data.decode('utf-8'))
+        elif mess == '0':
+            sock.send(mess_byte)
+            break
+        else:
+            sock.send(mess_byte)
+            with open(mess, "wb") as f:
+                while True:
+                    data = sock.recv(1024)
+                    if not len(data):
+                        break
+                    f.write(data)
+    sock.close()
+
+
 if __name__ == "__main__":
-    connect_server(tinyTools.get_ip(), 6666)
+    rece_file("127.0.0.1", 4321)
